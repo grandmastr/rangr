@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "version": "1.0.0",
+  "name": "Rangr",
+  "description": "A lightweight browser extension for quick and efficient API endpoint testing. Simplify your API calls with intuitive interface, recent call history, and payload support.",
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ]
+}

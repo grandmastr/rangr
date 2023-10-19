@@ -1,0 +1,70 @@
+@import 'base.css';
+
+body {
+    background: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    padding: 3rem 1rem;
+    max-width: 560px;
+}
+
+form {
+    min-width: 480px;
+    min-height: 400px;
+    width: 100%;
+}
+
+div.apiURL__wrapper--container {
+    display: flex;
+    gap: 0.8rem;
+}
+
+div.apiURL__wrapper {
+    border: var(--stroke-width) solid var(--stroke-color);
+    background: var(--secondary-color);
+    border-radius: 3px;
+    width: 100%;
+}
+
+input.apiURL__input {
+    background: transparent;
+    border: none;
+    height: 4rem;
+    width: 100%;
+    color: var(--text-color);
+    padding: 0 1rem;
+}
+
+button.apiURL__button {
+    border: 0;
+    background: var(--primary-color);
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: var(--text-color);
+    padding: 0.5rem 2rem;
+    border-radius: 1px;
+}
+
+section.apiURL__responseWrapper {
+    margin-top: 3rem;
+}
+
+section.apiURL__responseWrapper h2 {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin: 0;
+}
+
+div.apiURL__responseContainer {
+    border: var(--stroke-width) solid var(--stroke-color);
+    background: var(--secondary-color);
+    border-radius: 3px;
+    margin-top: 0.5rem;
+    min-height: 24rem;
+    color: var(--text-color);
+    padding: 1rem 2rem;
+}
