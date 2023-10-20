@@ -1,37 +1,52 @@
 <script setup lang="ts">
-import {ref} from 'vue';
-import VueJsonPretty from 'vue-json-pretty';
+import { ref } from "vue"
+import VueJsonPretty from "vue-json-pretty"
 
-import rangr from '@/lib/rangr';
+import rangr from "@/lib/rangr"
 
-type methods = | 'GET' | 'POST' | 'PUT' | 'DELETE'
+type methods = "GET" | "POST" | "PUT" | "DELETE"
 
-const method = ref<methods>('GET')
-const url = ref<string>('');
+const _methods = ["GET", "POST", "PUT", "DELETE"]
 
-const data = ref<any>();
+const method = ref<methods>("GET")
+const url = ref<string>("")
 
-const isProcessing = ref<boolean>(false);
+const data = ref<any>()
+
+const isProcessing = ref<boolean>(false)
 
 const handleSubmit = async () => {
-  isProcessing.value = true;
+  isProcessing.value = true
   try {
-    const response = await rangr(url.value, method.value);
+    const response = await rangr(url.value, method.value)
 
-    data.value = response.data;
+    data.value = response.data
   } finally {
-    isProcessing.value = false;
+    isProcessing.value = false
   }
 }
 </script>
 
 <template>
-  <main>
+  <main class="">
     <form @submit.prevent="handleSubmit">
       <div class="apiURL__wrapper--container">
-        <div class="apiURL__wrapper">
-          <label>
-            <input type="url" class="apiURL__input" v-model="url"/>
+        <div class="apiURL__wrapper flex flex-row">
+          <select
+            class="apiURL__input bg-[transparent] text-white pl-5"
+            v-model="method"
+          >
+            <option
+              value="GET"
+              v-for="m in _methods"
+              :key="m"
+              class="text-primary"
+            >
+              {{ m }}
+            </option>
+          </select>
+          <label class="w-full">
+            <input type="url" class="apiURL__input" v-model="url" />
           </label>
         </div>
         <button class="apiURL__button" :disabled="isProcessing">
@@ -42,7 +57,13 @@ const handleSubmit = async () => {
       <section class="apiURL__responseWrapper">
         <h2>Response</h2>
         <div class="apiURL__responseContainer">
-          <vue-json-pretty :data="data" v-if="data" :deep="3" :showLength="true" :showIcon="true"/>
+          <vue-json-pretty
+            :data="data"
+            v-if="data"
+            :deep="3"
+            :showLength="true"
+            :showIcon="true"
+          />
         </div>
       </section>
     </form>
